@@ -1,6 +1,6 @@
 class BikesController < ApplicationController
   def index
-    @bikes = Bike.all
+    @bikes = Bike.where("city: params[:city] AND :start_date <= params[:start-date] AND :end_date >= params[:end_date]")
   end
 
   def show
