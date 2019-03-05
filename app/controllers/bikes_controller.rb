@@ -42,8 +42,8 @@ class BikesController < ApplicationController
   end
 
   def destroy
-    @bike.destroy
     authorize @bike
+    @bike.destroy
     redirect_to bikes_path
   end
 

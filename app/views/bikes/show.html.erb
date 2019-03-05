@@ -22,7 +22,7 @@
     </div>
     <div class="type recap-footer">
       <p class="accessories">Type</p>
-      <p><%= @bike.type%></p>
+      <p><%= @bike.category%></p>
     </div>
     <div class="calcul-prix recap-footer">
       <p><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i %> jours x <%= @bike.price %>€</p>
@@ -33,7 +33,16 @@
       <p><strong><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i * @bike.price %>€</strong></p>
     </div>
     <div class="btn-booking text-center">
-      <%= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
+      <% if policy(@bike).destroy? %>
+        <%= link_to bike_path(@bike), method: :delete, data: {confirm: "Are you sure?"} do %>
+          <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
+        <% end %>
+      <% else %>
+        <%= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
+      <% end %>
+      <% if policy(@bike).edit? %>
+        <%= link_to " / Modifier mon offre", edit_bike_path(@bike)%>
+      <% end %>
     </div>
   </div>
 </div>
