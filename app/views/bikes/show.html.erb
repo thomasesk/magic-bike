@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="details">
+    <div class="images">
+
+    </div>
+  </div>
   <div class="recap">
     <div class="price text-center">
       <p><strong><%= @bike.price %>€ par jour</strong></p>
@@ -20,13 +25,13 @@
       <p class="accessories">Antivol</p>
       <p><%= @bike.locker ? "Oui" : "Non" %></p>
     </div>
-    <div class="type recap-footer">
+    <div class="category recap-footer">
       <p class="accessories">Catégorie</p>
-      <p><%= @bike.type%></p>
+      <p><%= @bike.category%></p>
     </div>
     <div class="calcul-prix recap-footer">
-      <p><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i %> jours x <%= @bike.price %>€</p>
-      <p><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i * @bike.price %>€</p>
+      <p><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) %> jours x <%= @bike.price %>€</p>
+      <p><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>€</p>
     </div>
     <div class="total recap-footer">
       <p><strong>Total</strong></p>
