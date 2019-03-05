@@ -1,26 +1,22 @@
 <div class="show-content">
   <div class="left-side">
-    <div class="container">
-      <div class="suggestion">
-      </div>
-      <div class="cards">
-        <% @bikes.each do |bike|  %>
-          <div class="card-bike">
-            <div class="card-image"><%= cl_image_tag bike.photo %></div>
-            <div class="card-bike-infos">
-              <div>
-                <h2><%= bike.name %></h2>
-                <p><%= bike.description %></p>
-              </div>
-              <h2 class="card-bike-price"><%= bike.price %></h2>
-              <%= cl_image_tag bike.user.photo, class: "card-trip-user avatar-bordered"%>
-            </div>
+    <div class="suggestion">
+    </div>
+    <div class="cards">
+      <% @bikes.each do |bike|  %>
+        <div class="card-bike">
+          <div class="card-image"><%= cl_image_tag bike.photo %></div>
+          <div class="card-bike-infos">
+            <h2 class="card-title"><%= bike.name %></h2>
+            <p class="card-text"><%= bike.description %></p>
+            <h5 class="card-bike-price"><%= bike.price %>€/day</h5>
           </div>
-        <% end %>
-      </div>
+          <%= link_to "Ride", bike_path(bike), class: "btn btn-primary btn-bike" %>
+        </div>
+      <% end %>
     </div>
   </div>
-  <div class="right-side-map">
+  <div class="right-side-map" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_url("front-page-picture.jpg")%>);">
   </div>
 </div>
 
@@ -32,4 +28,3 @@
         <li><div class="dropdown"><i class="fas fa-bicycle logo"></i></div></li>
       </ul>
     </div> -->
-
