@@ -1,6 +1,6 @@
 class BikesController < ApplicationController
   def index
-    @bikes = Bike.where("city: params[:city] AND :start_date <= params[:start-date] AND :end_date >= params[:end_date]")
+    @bikes = Bike.where(city: params[:city]).where("start_date <= ? AND end_date >= ?", params[:start_date], params[:end_date])
   end
 
   def show
@@ -17,6 +17,7 @@ class BikesController < ApplicationController
       redirect_to bike_path(@bike)
     else
       render :new
+    end
   end
 
   def edit
