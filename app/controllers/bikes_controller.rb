@@ -6,7 +6,7 @@ class BikesController < ApplicationController
   end
 
   def index
-    @bikes = policy_scope(Bike).order(created_at: :desc)
+    @bikes = policy_scope(Bike).where(city: params[:city]).where("start_date <= ? AND end_date >= ?", params[:start_date], params[:end_date])
   end
 
   def show

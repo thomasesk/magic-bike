@@ -1,2 +1,35 @@
-<h1>Bikes#index</h1>
-<p>Find me in app/views/bikes/index.html.erb</p>
+<div class="show-content">
+  <div class="left-side">
+    <div class="container">
+      <div class="suggestion">
+      </div>
+      <div class="cards">
+        <% @bikes.each do |bike|  %>
+          <div class="card-bike">
+            <div class="card-image"><%= cl_image_tag bike.photo %></div>
+            <div class="card-bike-infos">
+              <div>
+                <h2><%= bike.name %></h2>
+                <p><%= bike.description %></p>
+              </div>
+              <h2 class="card-bike-price"><%= bike.price %></h2>
+              <%= cl_image_tag bike.user.photo, class: "card-trip-user avatar-bordered"%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="right-side-map">
+  </div>
+</div>
+
+
+  <!--   <div class="criterias">
+      <ul>
+        <li><i class="fas fa-football-helmet"></i></li>
+        <li><i class="fas fa-brackets"></i></li>
+        <li><div class="dropdown"><i class="fas fa-bicycle logo"></i></div></li>
+      </ul>
+    </div> -->
+

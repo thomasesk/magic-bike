@@ -1,22 +1,22 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_url("front-page-picture-2.jpg")%>);">
   <div class="content">
     <h1>Découvrez <span id="banner-typed-text"></span>en vélo</h1>
-    <form class="form-inline">
+    <form action="/bikes" class="form-inline">
       <div class="form-group mx-sm-3 mb-2">
-        <label for="location" class="sr-only">Location</label>
-        <input type="text" class="form-control" id="inputPassword2" placeholder="Destination ?">
+        <label for="location"  class="sr-only">Location</label>
+        <input type="text" name="city" class="form-control" id="inputPassword2" placeholder="Destination ?">
       </div>
       <div class="form-group mx-sm-3 mb-2">
         <label for="dates" class="sr-only">Dates</label>
-        <input type="date" class="form-control" value="2019-12-19" id="inputPassword2">
+        <input type="date" name="start_date" class="form-control" value="2019-12-19" id="inputPassword2">
       </div>
       <div class="form-group mx-sm-3 mb-2">
         <label for="dates" class="sr-only">Date</label>
-        <input type="date" class="form-control" value="2019-08-19" id="inputPassword2">
+        <input type="date" name="end_date" class="form-control" value="2019-08-19" id="inputPassword2">
       </div>
       <div class="form-group">
         <label for="nombredevoyageurs"></label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select class="form-control" name="personnes" id="exampleFormControlSelect1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
