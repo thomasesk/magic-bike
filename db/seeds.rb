@@ -17,7 +17,7 @@ end
 
 bikes = []
 5.times do |i|
-  bikes << Bike.create(name: "velo #{i} bleu", user: users[i], price: "10€", city: "Paris", zipcode: 75004)
+  bikes << Bike.create(name: "velo #{i} bleu", user: users[i], price: "10€", city: "Paris", zipcode: 75004, start_date: "01/01/2002", end_date: "12/12/2020", description: "Amazing bike, never had any issues with it", address: "4 sente des moulins", country: "France", helmet: true, rack: false, locker: true, photo: "../front-page-picture.jpg")
 end
 
 Booking.create(bike: bikes[1], user: users[0])
