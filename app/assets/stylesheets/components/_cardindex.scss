@@ -4,44 +4,40 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-bike > .background-image {
+.card-image {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
+.card-bike-infos {
+  margin: 10px;
+}
+
 .card-bike h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  margin: 0;
+}
+
+.card-bike h5 {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .card-bike p {
   font-size: 12px;
   opacity: .7;
-  margin: 0;
 }
 
-
-.card-bike .card-bike-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-.card-bike-infos .card-bike-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+.btn-bike {
+  width: 100%;
 }
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 30px;
+  margin: 20px 50px;
 }
 
 // Smallest device
@@ -75,6 +71,6 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1;
   }
 }
