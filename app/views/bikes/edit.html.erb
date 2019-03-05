@@ -1,2 +1,34 @@
-<h1>Bikes#edit</h1>
-<p>Find me in app/views/bikes/edit.html.erb</p>
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-offset-4 ">
+      <div class="form-card">
+        <h1>Add your bike !</h1>
+        <%= simple_form_for(@bike) do |f| %>
+          <div class="form-group">
+            <%= f.input :name, label:"Your bike", class: 'form-control' %>
+            <%= f.input :description, label:'Short description of your beloved bike', class: 'form-control' %>
+            <%= f.input :category, collection: ['tandem','sport','ville','vintage','route'], prompt: "Select your category", selected: "ville" %>
+
+            <%= f.input :address, class: 'form-control' %>
+            <%= f.input :city, class: 'form-control' %>
+            <%= f.input :zipcode, class: 'form-control' %>
+
+            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
+            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
+            <%= f.input :price, class: 'form-control' %>
+
+            <%= f.input :locker, as: :boolean, boolean_style: :inline, class: 'form-control' %>
+            <%= f.input :helmet, class: 'form-control' %>
+            <%= f.input :rack, class: 'form-control' %>
+
+            <%= f.input :photo %>
+
+          </div>
+          <%= f.submit class: 'btn' %>
+        <% end %>
+        <%= link_to "Cancel", root_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
