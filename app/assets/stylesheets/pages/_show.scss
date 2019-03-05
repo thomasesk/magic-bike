@@ -1,0 +1,43 @@
+.recap {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e4e4e4;
+  width: 300px;
+  padding: 20px;
+  border-opacity: .1;
+  background-color: white;
+  border-radius: 2%;
+}
+
+.recap-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #e4e4e4;
+  padding-top: 10px;
+  padding-bottom: 3px;
+}
+
+.btn-booking {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.price {
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.total {
+  border-bottom: 1px solid #e4e4e4;
+  border-top: 1px solid #e4e4e4;
+}
+
+.accessories {
+  font-style: italic;
+}

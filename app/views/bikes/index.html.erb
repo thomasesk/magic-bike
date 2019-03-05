@@ -11,7 +11,7 @@
             <p class="card-text"><%= bike.description %></p>
             <h5 class="card-bike-price"><%= bike.price %>€/day</h5>
           </div>
-          <%= link_to "Ride", bike_path(bike), class: "btn btn-primary btn-bike" %>
+          <%= link_to "Ride", bike_path(@search_params.merge(id: bike.id)), class: "btn btn-primary btn-bike" %>
         </div>
       <% end %>
     </div>
