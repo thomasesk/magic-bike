@@ -1,2 +1,39 @@
-<h1>Bikes#show</h1>
-<p>Find me in app/views/bikes/show.html.erb</p>
+<div class="container">
+  <div class="recap">
+    <div class="price text-center">
+      <p><strong><%= @bike.price %>€ par jour</strong></p>
+    </div>
+    <div class="dates">
+      <p><%= params[:start_date] %></p>
+      <i class="fas fa-arrow-right"></i>
+      <p><%= params[:end_date] %></p>
+    </div>
+    <div class="helmet recap-footer">
+      <p class="accessories">Helmet</p>
+      <p><%= @bike.helmet ? "Oui" : "Non" %></p>
+    </div>
+    <div class="rack recap-footer">
+      <p class="accessories">Rack</p>
+      <p><%= @bike.rack ? "Oui" : "Non" %></p>
+    </div>
+    <div class="locket recap-footer">
+      <p class="accessories">Locker</p>
+      <p><%= @bike.locker ? "Oui" : "Non" %></p>
+    </div>
+    <div class="type recap-footer">
+      <p class="accessories">Type</p>
+      <p><%= @bike.type%></p>
+    </div>
+    <div class="calcul-prix recap-footer">
+      <p><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i %> jours x <%= @bike.price %>€</p>
+      <p><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i * @bike.price %>€</p>
+    </div>
+    <div class="total recap-footer">
+      <p><strong>Total</strong></p>
+      <p><strong><%= ((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i * @bike.price %>€</strong></p>
+    </div>
+    <div class="btn-booking text-center">
+      <%= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
+    </div>
+  </div>
+</div>
