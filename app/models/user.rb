@@ -6,4 +6,8 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   has_many :bikes
   has_many :bookings
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
