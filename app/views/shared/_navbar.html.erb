@@ -9,7 +9,7 @@
 
     <%= link_to 'Louer mon vélo', new_bike_path, class: 'navbar-wagon-item navbar-wagon-link' %>
     <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Louer mon vélo</a> -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Mes réservations</a>
+    <%= link_to 'Mes réservations', bookings_path, class: 'navbar-wagon-item navbar-wagon-link' %>
 
     <!-- Profile picture with dropdown list -->
     <% if user_signed_in? %>

@@ -1,2 +1,99 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="container-booking">
+  <div class="profile text-center">
+    <%= cl_image_tag current_user.photo, class: "avatar-large" %>
+    <h2><%= current_user.name %></h2>
+  </div>
+
+  <div class="tabs">
+    <a href="#" class="tab active">Mes réservations</a>
+    <a href="#" class="tab">Mes vélos</a>
+  </div>
+
+  <ul class="inbox">
+    <% @bookings.each do |booking| %>
+      <li class="message">
+        <%= cl_image_tag booking.bike.user.photo, class: "avatar-large" %>
+        <div class="message-name">
+          <h3><%= booking.bike.user.name %></h3>
+          <p> Début: <%= booking.start_date %></p>
+          <p> Fin: <%= booking.end_date %></p>
+        </div>
+        <div class="message-body">
+          <p><strong> <%=  booking.bike.name %></strong></p>
+          <p> <%= booking.bike.address %> </p>
+        </div>
+        <div class="message-status">
+          <% if booking.status == "pending" %>
+            <p class="status pending">En cours</p>
+          <% elsif booking.status == "accepted" %>
+            <p class="status accepted">Confirmé</p>
+          <% else %>
+            <p class="status declined">Refusé</p>
+          <% end %>
+          <p class="price text-center"><%= booking.price %> €</p>
+          <div class="text-center">
+            <% if policy(booking).destroy? %>
+              <%= link_to booking_path(booking), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
+              <% end %>
+            <% end %>
+            <i class="far fa-comments" style="color: rgb(0,0,0)"></i>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <br>
+  <br>
+
+
+  <ul class="inbox">
+    <% @hosted_bookings.each do |booking| %>
+      <li class="message">
+        <%= cl_image_tag booking.bike.photo, class: "avatar-large" %>
+        <div class="message-name">
+          <h3><%= booking.user.name %></h3>
+          <p> Début: <%= booking.start_date %></p>
+          <p> Fin: <%= booking.end_date %></p>
+        </div>
+        <div class="message-body">
+          <p><strong> <%=  booking.bike.name %></strong></p>
+          <p> Bonjour <%= booking.bike.user.name %>, j'arrive demain à Paris et souhaiterais découvrir la ville à Vélo. Quel itinéraire me conseillez-vous ? Merci ! </p>
+        </div>
+        <div class="message-status">
+
+          <% if booking.status == "pending" %>
+            <p class="status pending">En cours</p>
+            <%= form_for booking, url: booking_validate_path(booking, status: :accepted), method: :post do |f| %>
+              <%= f.submit 'Valider', class: 'btn btn-success btn-sm' %>
+            <% end %>
+            <%= form_for booking, url: booking_validate_path(booking, status: :refused), method: :post do |f| %>
+              <%= f.submit 'Refuser', class: 'btn btn-warning btn-sm' %>
+            <% end %>
+          <% elsif booking.status == "accepted" %>
+            <p class="status accepted">Confirmé</p>
+            <%= form_for booking, url: booking_validate_path(booking, status: :refused), method: :post do |f| %>
+              <%= f.submit 'Refuser', class: 'btn btn-warning btn-sm' %>
+            <% end %>
+          <% else %>
+            <p class="status declined">Refusé</p>
+            <%= form_for booking, url: booking_validate_path(booking, status: :accepted), method: :post do |f| %>
+              <%= f.submit 'Valider', class: 'btn btn-success btn-sm' %>
+            <% end %>
+          <% end %>
+
+
+          <p class="price text-center"><%= booking.price %> €</p>
+          <div class="text-center">
+            <% if policy(booking).destroy? %>
+              <%= link_to booking_path(booking), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
+              <% end %>
+            <% end %>
+            <!-- <i class="far fa-comments" style="color: rgb(0,0,0)"></i> -->
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
