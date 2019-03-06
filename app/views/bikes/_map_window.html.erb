@@ -1,0 +1,6 @@
+<div class="card-bike-infos">
+  <h2 style="font-size: 18px"><%= bike.name %></h2>
+  <p class="card-text">Vélo de <%= bike.category %></p>
+  <h5 class="card-bike-price"><%= bike.price %>€/day</h5>
+</div>
+<%= link_to "Ride", bike_path(@search_params.merge(id: bike.id)), class: "btn btn-primary btn-bike" %>
