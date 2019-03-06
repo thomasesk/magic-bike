@@ -44,6 +44,8 @@
     <% end %>
   </ul>
 
+  <br>
+  <br>
 
 
   <ul class="inbox">
@@ -61,10 +63,26 @@
         </div>
         <div class="message-status">
 
-          <%= simple_form_for ([@bike, booking]) do |f| %>
-            <%= f.submit 'Valider', class: 'btn btn-success btn-sm' %>
-            <%= f.submit 'Refuser', class: 'btn btn-warning btn-sm' %>
+          <% if booking.status == "pending" %>
+            <p class="status pending">En cours</p>
+            <%= form_for booking, url: booking_validate_path(booking, status: :accepted), method: :post do |f| %>
+              <%= f.submit 'Valider', class: 'btn btn-success btn-sm' %>
+            <% end %>
+            <%= form_for booking, url: booking_validate_path(booking, status: :refused), method: :post do |f| %>
+              <%= f.submit 'Refuser', class: 'btn btn-warning btn-sm' %>
+            <% end %>
+          <% elsif booking.status == "accepted" %>
+            <p class="status accepted">Confirmé</p>
+            <%= form_for booking, url: booking_validate_path(booking, status: :refused), method: :post do |f| %>
+              <%= f.submit 'Refuser', class: 'btn btn-warning btn-sm' %>
+            <% end %>
+          <% else %>
+            <p class="status declined">Refusé</p>
+            <%= form_for booking, url: booking_validate_path(booking, status: :accepted), method: :post do |f| %>
+              <%= f.submit 'Valider', class: 'btn btn-success btn-sm' %>
+            <% end %>
           <% end %>
+
 
           <p class="price text-center"><%= booking.price %> €</p>
           <div class="text-center">

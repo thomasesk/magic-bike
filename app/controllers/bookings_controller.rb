@@ -43,6 +43,17 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+  def validate
+    # raise
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to bookings_path
+    # raise
+    # raise
+  end
+
 
   private
 

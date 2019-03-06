@@ -29,5 +29,8 @@ class BookingPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def validate?
+    record.bike.user == user
+  end
 
 end
