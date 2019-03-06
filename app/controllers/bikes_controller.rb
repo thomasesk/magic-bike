@@ -6,8 +6,15 @@ class BikesController < ApplicationController
   end
 
   def index
-    @bikes = policy_scope(Bike).where(city: params[:city]).where("start_date <= ? AND end_date >= ?", params[:start_date], params[:end_date])
+    @bikes = policy_scope(Bike).where(city: params[:city]).where("start_date <= ? AND end_date >= ?", params[:start_date], params[:end_date]).where.not(latitude: nil, longitude: nil)
     @search_params = { city: params[:city], start_date: params[:start_date], end_date: params[:end_date] }
+    @markers = @bikes.map do |bike|
+      {
+        lng: bike.longitude,
+        lat: bike.latitude,
+        infoWindow: render_to_string(partial: "/bikes/map_window", locals: { bike: bike })
+      }
+    end
   end
 
   def show
