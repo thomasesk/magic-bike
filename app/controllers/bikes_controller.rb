@@ -32,7 +32,7 @@ class BikesController < ApplicationController
     authorize @bike
     if @bike.save
       # redirect_to bike_path(@bike)
-      redirect_to bikes_path
+      redirect_to root_path
     else
       render :new
     end
