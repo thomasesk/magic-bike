@@ -1,4 +1,10 @@
 import "bootstrap";
 import "../plugins/flatpickr"
-import { loadDynamicBannerText } from '../components/banner';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+import { loadDynamicBannerText } from '../plugins/typed';
+import { initMapbox, fitMapToMarkers } from '../plugins/init_mapbox';
+
 loadDynamicBannerText();
+initMapbox();
+

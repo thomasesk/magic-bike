@@ -16,15 +16,11 @@
       <% end %>
     </div>
   </div>
-  <div class="right-side-map" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_url("front-page-picture.jpg")%>);">
-  </div>
+  <div
+    id="map"
+    style="width: 40vw;
+    height: calc(100vh - 70px);"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 </div>
-
-
-  <!--   <div class="criterias">
-      <ul>
-        <li><i class="fas fa-football-helmet"></i></li>
-        <li><i class="fas fa-brackets"></i></li>
-        <li><div class="dropdown"><i class="fas fa-bicycle logo"></i></div></li>
-      </ul>
-    </div> -->
