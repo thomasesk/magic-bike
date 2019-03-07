@@ -3,8 +3,7 @@
     <h1>Découvrez <span id="banner-typed-text"></span>en vélo</h1>
     <form action="/bikes" class="form-inline">
       <div class="form-group mx-sm-3 mb-2">
-        <label for="location"  class="sr-only">Location</label>
-        <input type="text" name="city" class="form-control" id="bike_city" placeholder="Destination">
+        <input name="city" class="form-control" id="bike_city" placeholder="Destination" style:"color: black">
       </div>
       <div class="form-group mx-sm-3 mb-2">
         <input type="date" name="start_date" class="form-control datepicker" value="<%= Time.now.strftime("%d/%m/%Y") %>" placeholder="Arrivée" id="inputPassword2">
@@ -26,8 +25,3 @@
     </form>
   </div>
 </div>
-
-<!--
-   <= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
-            <= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
- -->

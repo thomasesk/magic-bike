@@ -7,15 +7,4 @@ const initAutocomplete = () => {
   }
 };
 
-const cityAutocomplete = () => {
-  const cityInput = document.getElementById('bike_city')
-  if (cityInput) {
-    places({ container: addressInput });
-  }
-  configure({
-    type: 'city',
-    aroundLatLngViaIP: false,
-  });
-};
-
-export { initAutocomplete, cityAutocomplete };
+export { initAutocomplete };
