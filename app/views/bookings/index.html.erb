@@ -1,15 +1,18 @@
 <div class="container-booking">
+  <!-- Profile summary -->
   <div class="profile text-center">
     <%= cl_image_tag current_user.photo, class: "avatar-large" %>
     <h2><%= current_user.name %></h2>
   </div>
 
-  <div class="tabs">
-    <a href="#" class="tab active">Mes réservations</a>
-    <a href="#" class="tab">Mes vélos</a>
+  <!-- Tabs to decide bikes/bookings side -->
+  <div id="booking_tabs" class="tabs">
+    <a id="my_bookings_title" href="#" class="tab active">Mes réservations</a>
+    <a id="my_bikes_title" href="#" class="tab">Mes vélos</a>
   </div>
 
-  <ul class="inbox">
+  <!-- Bookings layout -->
+  <ul class="inbox" id="my_bookings">
     <% @bookings.each do |booking| %>
       <li class="message">
         <%= cl_image_tag booking.bike.user.photo, class: "avatar-large" %>
@@ -48,7 +51,7 @@
   <br>
 
 
-  <ul class="inbox">
+  <ul hidden id="my_bikes" class="inbox">
     <% @hosted_bookings.each do |booking| %>
       <li class="message">
         <%= cl_image_tag booking.bike.photo, class: "avatar-large" %>
@@ -61,7 +64,7 @@
           <p><strong> <%=  booking.bike.name %></strong></p>
           <p> Bonjour <%= booking.bike.user.name %>, j'arrive demain à Paris et souhaiterais découvrir la ville à Vélo. Quel itinéraire me conseillez-vous ? Merci ! </p>
         </div>
-        <div class="message-status">
+        <div class="message-status text-center">
 
           <% if booking.status == "pending" %>
             <p class="status pending">En cours</p>

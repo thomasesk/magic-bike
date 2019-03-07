@@ -8,7 +8,7 @@ const initAutocomplete = () => {
 };
 
 const cityAutocomplete = () => {
-  const cityInput = document.getElementByI('bike_city')
+  const cityInput = document.getElementById('bike_city')
   if (cityInput) {
     places({ container: addressInput });
   }
