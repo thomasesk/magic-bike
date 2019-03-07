@@ -9,9 +9,13 @@
           <div class="card-bike-infos">
             <h2 class="card-title"><%= bike.name %></h2>
             <p class="card-text">Vélo de <%= bike.category %></p>
-            <h5 class="card-bike-price"><%= bike.price %>€/day</h5>
+            <h5 class="card-bike-price"><%= bike.price %>€ par jour</h5>
           </div>
-          <%= link_to "Ride", bike_path(@search_params.merge(id: bike.id)), class: "btn btn-primary btn-bike" %>
+          <% if bike.user == current_user %>
+            <%= link_to "Voir mon vélo", bike_path(@search_params.merge(id: bike.id)), class: "btn btn-info btn-bike" %>
+          <% else %>
+            <%= link_to "Voir ce vélo", bike_path(@search_params.merge(id: bike.id)), class: "btn btn-primary btn-bike" %>
+          <% end %>
         </div>
       <% end %>
     </div>

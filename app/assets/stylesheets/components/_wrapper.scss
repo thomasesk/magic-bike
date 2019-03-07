@@ -10,3 +10,18 @@
 .margin-top {
   margin-top: 0px;
 }
+
+.wrapper-log-in {
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  background-image: asset-url('red_bike_wrapper2.jpg');
+  height: calc(100vh - 70px);
+  width: 100vw, !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 150px;
+  padding-top: 100px;
+
+}
