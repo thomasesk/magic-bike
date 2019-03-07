@@ -11,5 +11,3 @@ loadDynamicBannerText();
 initMapbox();
 bookingsLayout();
 initAutocomplete();
-cityAutocomplete();
-
