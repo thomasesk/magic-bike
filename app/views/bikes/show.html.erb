@@ -1,74 +1,78 @@
-<div class="container">
-  <div class="show-content">
-    <div class="details-card">
-      <div class="upper-part">
-        <%= cl_image_tag(@bike.photo, class: "image-show")%>
-        <div class="owner-description">
-          <div class="name-owner", style="margin-bottom: 10px;">
-            <p style="margin-right: 5px;"><%= @bike.user.first_name %></p>
-            <p><%= @bike.user.last_name %></p>
+<div class="wrapper-show-bike">
+  <div class="container">
+    <div class="show-content">
+      <div class="details-card">
+        <div class="upper-part">
+          <%= cl_image_tag(@bike.photo, class: "image-show")%>
+          <div class="owner-description">
+            <div class="name-owner", style="margin-bottom: 10px;">
+              <p style="margin-right: 5px;"><%= @bike.user.first_name %></p>
+              <p><%= @bike.user.last_name %></p>
+            </div>
+            <%= cl_image_tag(@bike.user.photo, class: "avatar-xlg")%>
+            <%= link_to "Contacter", root_path, class: "badge badge-info", style: "margin-top: 10px"%>
           </div>
-          <%= cl_image_tag(@bike.user.photo, class: "avatar-xlg")%>
-          <%= link_to "Contacter", root_path, class: "badge badge-info", style: "margin-top: 10px"%>
+        </div>
+        <div class="bike-description">
+            <p><strong><%= @bike.name %></strong></p>
+            <p><%= @bike.description %></p>
         </div>
       </div>
-      <div class="bike-description">
-          <p><strong><%= @bike.name %></strong></p>
-          <p><%= @bike.description %></p>
-      </div>
-    </div>
-    <div class="recap">
-      <div class="price text-center">
-        <p><strong><%= @bike.price %>€ par jour</strong></p>
-      </div>
-      <div class="dates">
-        <p><%= params[:start_date] %></p>
-        <p> - </p>
-        <p><%= params[:end_date] %></p>
-      </div>
-      <div class="helmet recap-footer">
-        <p class="accessories">Casque</p>
-        <p><%= @bike.helmet ? "Oui" : "Non" %></p>
-      </div>
-      <div class="rack recap-footer">
-        <p class="accessories">Porte-bagage</p>
-        <p><%= @bike.rack ? "Oui" : "Non" %></p>
-      </div>
-      <div class="locket recap-footer">
-        <p class="accessories">Antivol</p>
-        <p><%= @bike.locker ? "Oui" : "Non" %></p>
-      </div>
-      <div class="category recap-footer">
-        <p class="accessories">Catégorie</p>
-        <p><%= @bike.category%></p>
-      </div>
-      <div class="calcul-prix recap-footer">
-        <p><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) %> jours x <%= @bike.price %>€</p>
-        <p><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>€</p>
-      </div>
-      <div class="total recap-footer">
-        <p><strong>Total</strong></p>
-        <p><strong><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>€</strong></p>
-      </div>
-      <div class="btn-booking text-center">
-        <% if policy(@bike).destroy? %>
-          <%= link_to bike_path(@bike), method: :delete, data: {confirm: "Are you sure?"} do %>
-            <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
+      <div class="recap">
+        <div class="price text-center">
+          <p><strong><%= @bike.price %>€ par jour</strong></p>
+        </div>
+        <div class="dates">
+          <p><%= params[:start_date] %></p>
+          <p> - </p>
+          <p><%= params[:end_date] %></p>
+        </div>
+        <div class="helmet recap-footer">
+          <p class="accessories">Casque</p>
+          <p><%= @bike.helmet ? "Oui" : "Non" %></p>
+        </div>
+        <div class="rack recap-footer">
+          <p class="accessories">Porte-bagage</p>
+          <p><%= @bike.rack ? "Oui" : "Non" %></p>
+        </div>
+        <div class="locket recap-footer">
+          <p class="accessories">Antivol</p>
+          <p><%= @bike.locker ? "Oui" : "Non" %></p>
+        </div>
+        <div class="category recap-footer">
+          <p class="accessories">Catégorie</p>
+          <p><%= @bike.category%></p>
+        </div>
+        <div class="calcul-prix recap-footer">
+          <p><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) %> jours x <%= @bike.price %>€</p>
+          <p><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>€</p>
+        </div>
+        <div class="total recap-footer">
+          <p><strong>Total</strong></p>
+          <p><strong><%= (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>€</strong></p>
+        </div>
+        <div class="btn-booking text-center">
+          <% if policy(@bike).destroy? %>
+            <%= link_to bike_path(@bike), method: :delete, data: {confirm: "Are you sure?"} do %>
+              <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
+            <% end %>
+          <% else %>
+            <%= simple_form_for ([@bike, @booking]) do |f| %>
+              <%= f.hidden_field :price, as: :hidden, value: (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>
+              <%= f.hidden_field :start_date, value: params[:start_date] %>
+              <%= f.hidden_field :end_date, value: params[:end_date] %>
+              <%= f.hidden_field :status, value: "pending" %>
+              <%= f.submit class: "btn btn-primary" %>
+              <%#= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= simple_form_for ([@bike, @booking]) do |f| %>
-            <%= f.hidden_field :price, as: :hidden, value: (((Date.parse params[:end_date]) - (Date.parse params[:start_date])).to_i + 1) * @bike.price %>
-            <%= f.hidden_field :start_date, value: params[:start_date] %>
-            <%= f.hidden_field :end_date, value: params[:end_date] %>
-            <%= f.hidden_field :status, value: "pending" %>
-            <%= f.submit class: "btn btn-primary" %>
-            <%#= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
+          <% if policy(@bike).edit? %>
+            <%= link_to "Modifier mon offre", edit_bike_path(@bike), class: "btn btn-primary"%>
           <% end %>
-        <% end %>
-        <% if policy(@bike).edit? %>
-          <%= link_to "Modifier mon offre", edit_bike_path(@bike), class: "btn btn-primary"%>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+

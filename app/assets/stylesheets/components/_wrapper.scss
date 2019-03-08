@@ -23,5 +23,19 @@
   align-items: center;
   padding-bottom: 150px;
   padding-top: 100px;
+}
 
+.wrapper-show-bike {
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('old_red_bike_wrapper.jpg');
+  // height: calc(100vh - 70px);
+  height: 110vh;
+  width: 100vw, !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 150px;
+  padding-top: 100px;
 }

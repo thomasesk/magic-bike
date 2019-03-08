@@ -51,9 +51,14 @@
   font-weight: bold;
   display: flex;
   flex-direction: column;
-
-
 }
+
+.message-status p {
+  margin: 0px;
+}
+
+
+
 .status.accepted {
   color: green;
 }
