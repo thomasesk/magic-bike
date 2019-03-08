@@ -5,7 +5,7 @@
     <div class="cards">
       <% @bikes.each do |bike|  %>
         <div class="card-bike">
-          <%= cl_image_tag(bike.photo, class: "card-image")%>
+          <%= cl_image_tag(bike.photo, class: "card-image") %>
           <div class="card-bike-infos">
             <h2 class="card-title"><%= bike.name %></h2>
             <p class="card-text">Vélo de <%= bike.category %></p>

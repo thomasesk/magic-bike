@@ -1,21 +1,23 @@
-<div class="container">
-  <div class="show-content">
-    <div class="details-card">
-      <div class="upper-part">
-        <%= cl_image_tag(@bike.photo, class: "image-show")%>
-        <div class="owner-description">
-          <div class="name-owner", style="margin-bottom: 10px;">
-            <p style="margin-right: 5px;"><%= @bike.user.first_name %></p>
-            <p><%= @bike.user.last_name %></p>
+<div class="wrapper-show-bike">
+  <div class="container">
+    <div class="show-content">
+      <div class="details-card">
+        <div class="upper-part">
+          <%= cl_image_tag(@bike.photo, class: "image-show")%>
+          <div class="owner-description">
+            <div class="name-owner", style="margin-bottom: 10px;">
+              <p style="margin-right: 5px;"><%= @bike.user.first_name %></p>
+              <p><%= @bike.user.last_name %></p>
+            </div>
+            <%= cl_image_tag(@bike.user.photo, class: "avatar-xlg")%>
+            <%= link_to "Contacter", root_path, class: "badge badge-info", style: "margin-top: 10px"%>
           </div>
-          <%= cl_image_tag(@bike.user.photo, class: "avatar-xlg")%>
-          <%= link_to "Contacter", root_path, class: "badge badge-info", style: "margin-top: 10px"%>
         </div>
-      </div>
-      <div class="bike-description">
+        <div class="bike-description">
           <p><strong><%= @bike.name %></strong></p>
           <p><%= @bike.description %></p>
           <p id="show-address">Address: <%= @bike.address %></p>
+        </div>
       </div>
     </div>
     <div class="recap">
@@ -65,11 +67,14 @@
             <%= f.submit class: "btn btn-primary" %>
             <%#= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
           <% end %>
-        <% end %>
-        <% if policy(@bike).edit? %>
-          <%= link_to "Modifier mon offre", edit_bike_path(@bike), class: "btn btn-primary"%>
-        <% end %>
+          <% end %>
+          <% if policy(@bike).edit? %>
+            <%= link_to "Modifier mon offre", edit_bike_path(@bike), class: "btn btn-primary"%>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
