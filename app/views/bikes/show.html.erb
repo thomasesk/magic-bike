@@ -14,8 +14,9 @@
           </div>
         </div>
         <div class="bike-description">
-            <p><strong><%= @bike.name %></strong></p>
-            <p><%= @bike.description %></p>
+          <p><strong><%= @bike.name %></strong></p>
+          <p><%= @bike.description %></p>
+          <p id="show-address">Adresse: <%= @bike.address %></p>
         </div>
       </div>
       <div class="recap">
@@ -24,7 +25,7 @@
         </div>
         <div class="dates">
           <p><%= params[:start_date] %></p>
-          <p> - </p>
+          <i class="fas fa-angle-right arrow"></i>
           <p><%= params[:end_date] %></p>
         </div>
         <div class="helmet recap-footer">
@@ -65,10 +66,11 @@
               <%= f.submit class: "btn btn-primary" %>
               <%#= link_to "Book Now", bike_bookings_path(@bike), class: "btn btn-primary"%>
             <% end %>
-          <% end %>
-          <% if policy(@bike).edit? %>
-            <%= link_to "Modifier mon offre", edit_bike_path(@bike), class: "btn btn-primary"%>
-          <% end %>
+            <% end %>
+            <% if policy(@bike).edit? %>
+              <%= link_to "Modifier", edit_bike_path(@bike), class: "btn btn-primary"%>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
