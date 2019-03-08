@@ -1,26 +1,29 @@
 <div class="wrapper">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-offset-4 ">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-card">
         <h1>C'est parti !</h1>
         <%= simple_form_for(@bike) do |f| %>
           <div class="form-group form-complet">
-            <div class="ensemble">
-              <%= f.input :name, label: "Name", class: 'form-group has-success', placeholder: "Donnes-lui un petit nom" %>
+            <div class="form-left">
+              <%= f.input :name, label: "Nom", class: 'form-group has-success', placeholder: "Donnes-lui un petit nom" %>
               <%= f.input :description, label: "Description", class: 'form-control', placeholder: "Une petite description du vélo: âge, vitesse, situation amoureuse, etc etc." %>
-              <%= f.input :category, collection: ['tandem','sport','ville','vintage','route'], prompt: "Qui est vraiment ton vélo ?", selected: "ville" %>
+              <%= f.input :category, label: "Catégorie",collection: ['tandem','sport','ville','vintage','route'], prompt: "Qui est vraiment ton vélo ?", selected: "ville" %>
                <div class="form-accessoires">
                 <%= f.input :locker, label: "Antivol", as: :boolean, boolean_style: :inline, class: 'form-control' %>
                 <%= f.input :helmet, label: " Casque", class: 'form-control' %>
                 <%= f.input :rack, label: " Porte-bagage", class: 'form-control' %>
               </div>
-              <%= f.input :photo %>
+              <label class="file">
+                <%= f.input :photo, wrapper_html: { id: 'photo-file' } %>
+                <span class="btn btn-ghost btn-picture">Ajouter une photo</span>
+              </label>
             </div>
-              <div class="ensemble">
-              <%= f.input :address, class: 'form-control', id:'bike_address' %>
-              <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
-              <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
-              <%= f.input :price, class: 'form-control' %>
+            <div class="form-right">
+              <%= f.input :address, label: "Adresse",class: 'form-control', id:'bike_address' %>
+              <%= f.input :start_date, label: "Début", as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
+              <%= f.input :end_date, label: "Fin", as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
+              <%= f.input :price, label: "Prix", class: 'form-control' %>
             </div>
           </div>
           <%= f.submit class: 'btn btn-primary' %>
