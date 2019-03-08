@@ -1,2 +1,47 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<div class="container-booking">
+  <h1>Gérer ma réservation</h1>
+
+  <div class="message">
+    <%= cl_image_tag @booking.bike.user.photo, class: "avatar-large" %>
+    <div class="message-name">
+      <h3><%= @booking.bike.user.name %></h3>
+      <p> Début: <%= @booking.start_date %></p>
+      <p> Fin: <%= @booking.end_date %></p>
+    </div>
+    <div class="message-body">
+      <p><strong> <%=  @booking.bike.name %></strong></p>
+      <p> <%= @booking.bike.address %> </p>
+    </div>
+    <div class="message-status">
+      <% if @booking.status == "pending" %>
+        <p class="status pending">En cours</p>
+      <% elsif @booking.status == "accepted" %>
+        <p class="status accepted">Confirmé</p>
+      <% else %>
+        <p class="status declined">Refusé</p>
+      <% end %>
+      <p class="price text-center"><%= @booking.price %> €</p>
+      <div class="text-center">
+        <% if policy(@booking).destroy? %>
+          <%= link_to booking_path(@booking), method: :delete, data: {confirm: "Are you sure?"} do %>
+              <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="messages">
+    <h2><%= pluralize @booking.messages.size, "message" %></h2>
+    <% if @booking.messages.blank? %>
+      Pas de message pour le moment, voulez-vous contacter <%= @booking.bike.user.name %>
+    <% else %>
+      <% @booking.messages.each do |message| %>
+        <%= render 'messages/show', message: message %>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'messages/form', booking: @booking, message: @message %>
