@@ -40,7 +40,9 @@
                 <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
               <% end %>
             <% end %>
-            <i class="far fa-comments" style="color: rgb(0,0,0)"></i>
+            <%= link_to booking_path(booking) do %>
+              <i class="far fa-comments" style="color: rgb(0,0,0)"></i>
+            <% end %>
           </div>
         </div>
       </li>
@@ -63,6 +65,9 @@
         <div class="message-body">
           <p><strong> <%=  booking.bike.name %></strong></p>
           <p> Bonjour <%= booking.bike.user.name %>, j'arrive demain à Paris et souhaiterais découvrir la ville à Vélo. Quel itinéraire me conseillez-vous ? Merci ! </p>
+          <%= link_to booking_path(booking) do %>
+              <i class="far fa-comments" style="color: rgb(0,0,0)"></i>
+            <% end %>
         </div>
         <div class="message-status text-center">
 

@@ -1,0 +1,6 @@
+<div class="form-group form-complet">
+  <%= simple_form_for([ booking, message ]) do |form| %>
+    <%= form.input :content, as: :text, label:"Nouveau message",placeholder: "Besoin de renseignements ? Envoie un p'tit message", class: "form-control" %>
+    <%= form.button :submit, "Envoyer" ,class: 'btn btn-primary' %>
+  <% end %>
+</div>
