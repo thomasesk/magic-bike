@@ -35,6 +35,7 @@
               <% else %>
                 <p class="status declined">Refusé</p>
               <% end %>
+
               <p class="price text-center"><%= booking.price %> €</p>
               <div class="text-center">
                 <% if policy(booking).destroy? %>
@@ -42,7 +43,9 @@
                     <i class="far fa-trash-alt" style="color: rgb(0,0,0)"></i>
                   <% end %>
                 <% end %>
-                <i class="far fa-comments" style="color: rgb(0,0,0)"></i>
+                <%= link_to booking_path(booking) do %>
+                  <i class="far fa-comments" style="color: rgb(0,0,0)"></i>
+                <% end %>
               </div>
             </div>
           </li>
@@ -51,7 +54,6 @@
 
       <br>
       <br>
-
 
       <ul hidden id="my_bikes" class="inbox">
         <% @hosted_bookings.each do |booking| %>
@@ -67,7 +69,6 @@
               <p> Bonjour <%= booking.bike.user.name %>, j'arrive demain à Paris et souhaiterais découvrir la ville à Vélo. Quel itinéraire me conseillez-vous ? Merci ! </p>
             </div>
             <div class="message-status text-center">
-
               <% if booking.status == "pending" %>
                 <p class="status pending">En cours</p>
                 <%= form_for booking, url: booking_validate_path(booking, status: :accepted), method: :post do |f| %>

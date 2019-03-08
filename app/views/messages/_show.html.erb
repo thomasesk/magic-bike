@@ -1,0 +1,11 @@
+
+<div class="message-box">
+  <%= cl_image_tag @booking.bike.user.photo, class: "avatar-small" %>
+  <div class="message-body">
+    <p> <strong><%= message.content %></strong></p>
+    <p> Envoyé par <%= message.booking.user.name %> le <%= message.updated_at %></p>
+  </div>
+</div>
+
+
+
