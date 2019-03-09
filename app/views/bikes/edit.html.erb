@@ -5,7 +5,7 @@
         <h1>C'est parti !</h1>
         <%= simple_form_for(@bike) do |f| %>
           <div class="form-group form-complet">
-            <div class="ensemble">
+            <div class="form-left">
               <%= f.input :name, label: "Nom", class: 'form-group has-success', placeholder: "Donnes-lui un petit nom" %>
               <%= f.input :description, label: "Description", class: 'form-control', placeholder: "Une petite description du vélo: âge, vitesse, situation amoureuse, etc etc." %>
               <%= f.input :category, label: "Catégorie", collection: ['tandem','sport','ville','vintage','route'], prompt: "Qui est vraiment ton vélo ?", selected: "ville" %>
@@ -19,7 +19,7 @@
                 <span class="btn btn-ghost btn-picture">Ajouter une photo</span>
               </label>
             </div>
-              <div class="ensemble">
+            <div class="form-right">
               <%= f.input :address, label: "Adresse", class: 'form-control', id:'bike_address' %>
               <%= f.input :start_date, label: "Début", as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>
               <%= f.input :end_date, label: "Fin", as: :string, required: false, input_html: {class: "datepicker"}, class: 'form-control' %>

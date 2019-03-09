@@ -8,7 +8,7 @@
             <div class="form-left">
               <%= f.input :name, label: "Nom", class: 'form-group has-success', placeholder: "Donnes-lui un petit nom" %>
               <%= f.input :description, label: "Description", class: 'form-control', placeholder: "Une petite description du vélo: âge, vitesse, situation amoureuse, etc etc." %>
-              <%= f.input :category, label: "Catégorie",collection: ['tandem','sport','ville','vintage','route'], prompt: "Qui est vraiment ton vélo ?", selected: "ville" %>
+              <%= f.input :category, label: "Catégorie", collection: ['tandem','sport','ville','vintage','route'], prompt: "Qui est vraiment ton vélo ?", selected: "ville" %>
                <div class="form-accessoires">
                 <%= f.input :locker, label: "Antivol", as: :boolean, boolean_style: :inline, class: 'form-control' %>
                 <%= f.input :helmet, label: " Casque", class: 'form-control' %>
